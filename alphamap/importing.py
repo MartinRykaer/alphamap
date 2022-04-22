@@ -200,7 +200,7 @@ def import_maxquant_data(
     data_sub = data_sub.assign(modified_sequence=mod_seq.values)
 
     # replace outer () with []
-    mod_seq_replaced = data_sub.apply(lambda row: re.sub(r'\((.*?\(.*?\))\)',r'[\1]',row["modified_sequence"]), axis=1)
+    mod_seq_replaced = data_sub.apply(lambda row: re.sub(r'\((.*?)\)',r'[\1]',row["modified_sequence"]), axis=1)
     data_sub = data_sub.assign(modified_sequence=mod_seq_replaced.values)
 
     # get naked sequence
